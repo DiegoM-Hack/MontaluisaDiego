@@ -4,12 +4,21 @@ import java.awt.event.ActionListener;
 
 public class Factura extends JFrame {
     private JPanel principal;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField codigo;
+    private JTextField cantidad;
     private JButton calcularButton;
     private JButton regresarMenuButton;
+    private JLabel subtotal;
+    private JLabel iva;
+    private JLabel total;
+    private JLabel nombre;
+    private JLabel precio;
+
+
+    public Factura(String codigo, String nombre, int precio) {
+        this.nombre.setText(nombre);
+        this.precio.setText(precio + "");
+    }
 
     public Factura() {
         setTitle("Productos");
@@ -22,6 +31,7 @@ public class Factura extends JFrame {
         calcularButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                calcular();
 
             }
         });
@@ -33,5 +43,27 @@ public class Factura extends JFrame {
 
             }
         });
+
+    }
+
+    private void calcular() {
+        if(this.codigo.getText().equals(codigo) ){
+
+        }
+
+        try{
+            int precio1 = Integer.parseInt(precio.getText());
+            int cantidad1 = Integer.parseInt(cantidad.getText());
+            if(codigo.getText().isEmpty() || precio.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "El codigo o el precio no pueden estar vacio.", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+            }
+            int total1 = precio1 * cantidad1;
+            subtotal.setText(total1 +"");
+            double total2 = (total1 *0.15) + total1;
+            total.setText(total2 + "");
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingresa un numero valido");
+
+        }
     }
 }

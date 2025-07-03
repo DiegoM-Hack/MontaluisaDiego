@@ -22,8 +22,13 @@ public class MostrarProductos extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 MenuOpciones menu = new MenuOpciones();
                 dispose();
-
             }
         });
+    }
+    private void mostrarProductos(String codigo, String nombre, int precio,String detalle) {
+        this.codigo.setText(codigo);
+        this.nombre.setText(nombre);
+        this.stock.setText(precio + "");
+        this.detalle.setText(detalle);
     }
 }
